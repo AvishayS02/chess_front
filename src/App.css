@@ -1,0 +1,54 @@
+/* Custom styles for the homepage */
+.hero-section {
+  position: relative;
+  background: url('https://cdn.escharts.com/uploads/public/650/303/692/650303692e2e0406194075.png') center/cover no-repeat;
+  color: white;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+  filter: blur(8px);
+}
+
+.hero-section h1 {
+  font-size: 4rem;
+  text-shadow: 2px 2px 8px #000;
+}
+
+.welcome-message {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.card-deck {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.card {
+  flex: 1 1 calc(33% - 15px);
+  max-width: calc(33% - 15px);
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .card {
+      flex: 1 1 100%;
+      max-width: 100%;
+  }
+}
