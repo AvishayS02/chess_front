@@ -7,7 +7,7 @@ import '../styles/custom.css';
 const GamePage = () => {
   const [users, setUsers] = useState([]); // 
   const [selectedOpponent, setSelectedOpponent] = useState(null); 
-  const [selectedColor, setSelectedColor] = useState('White'); 
+  const [selectedColor, setSelectedColor] = useState('Black');
   const [gameResult, setGameResult] = useState(null); 
   const [gameId, setGameId] = useState(null); 
   const [result, setResult] = useState(''); 
@@ -79,10 +79,10 @@ const GamePage = () => {
         },
       })
       .then((response) => {
-        setGameResult(response.data.msg); // Store the game result message
+        setGameResult(response.data.msg); 
         console.log('Game result updated:', response.data);
 
-        // After successfully submitting the result, redirect to "My Account"
+        
         navigate('/myaccount'); // Navigate to the "My Account" page
       })
       .catch((error) => {
@@ -112,18 +112,17 @@ const GamePage = () => {
           </Form.Control>
         </Form.Group>
 
-        {/* Color selection */}
         <Form.Group controlId="colorSelect" className="mt-3">
-          <Form.Label>Select Color</Form.Label>
-          <Form.Control
-            as="select"
-            onChange={(e) => setSelectedColor(e.target.value)}
-          >
-            <option>White</option>
-            <option>Black</option>
-          </Form.Control>
-        </Form.Group>
-
+  <Form.Label>Select Color</Form.Label>
+  <Form.Control
+    as="select"
+    value={selectedColor}  // Bind the value of the select element to selectedColor
+    onChange={(e) => setSelectedColor(e.target.value)}  // Update selectedColor when choosed
+  >
+    <option value="White">White</option>
+    <option value="Black">Black</option>
+  </Form.Control>
+</Form.Group>
         {/* Start game button */}
         <Button
           variant="primary"

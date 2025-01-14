@@ -19,7 +19,7 @@ const LeaderBoard = () => {
 
       try {
         // Fetch leaderboard data
-        const response = await axios.get('http://localhost:8000/api/users/leaderboard/', {
+        const response = await axios.get('https://chessarena-fpp9.onrender.com/api/users/leaderboard/', {
           headers: {
             'Authorization': `Bearer ${token}`,  // Pass token in header
           },
@@ -32,7 +32,7 @@ const LeaderBoard = () => {
 
           // Retry request after refresh
           try {
-            const retryResponse = await axios.get('http://localhost:8000/api/leaderboard/', {
+            const retryResponse = await axios.get('https://chessarena-fpp9.onrender.com/api/leaderboard/', {
               headers: {
                 'Authorization': `Bearer ${token}`,  // Use refreshed token
               },
