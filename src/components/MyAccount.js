@@ -45,9 +45,21 @@ const MyAccount = () => {
             setLoading(false); // If no token, don't attempt fetch
         }
     }, [token, refreshAccessToken]);
+    const formatDate = (date) => {
+        const display = {
+            weekday: 'long', // "Monday"
+            year: 'numeric', // "2025"
+            month: 'long',   // "January"
+            day: 'numeric',  // "13"
+            hour: 'numeric', // "4"
+            minute: 'numeric', // "46"
+        };
+        return new Date(date).toLocaleString(undefined, display);
+    };
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
+    
 
     return (
         <div className="container my-5">
@@ -63,7 +75,7 @@ const MyAccount = () => {
                   <ListGroup.Item><strong>Username:</strong> {userProfile.username}</ListGroup.Item>
                   <ListGroup.Item><strong>Email:</strong> {userProfile.email}</ListGroup.Item>
                   <ListGroup.Item><strong>Elo Rating:</strong> {userProfile.score}</ListGroup.Item>
-                  <ListGroup.Item><strong>Joined:</strong> {userProfile.joined_date}</ListGroup.Item>
+                  <ListGroup.Item><strong>Joined:</strong> {userProfile.joined_date ? formatDate(userProfile.joined_date) : 'Date not available'}</ListGroup.Item>
                 </ListGroup>
               </Card.Body>
             </Card>
@@ -86,7 +98,7 @@ const MyAccount = () => {
             <Card className="daily-stats-card">
               <Card.Body>
                 <Card.Title className="text-center">Daily Stats</Card.Title>
-                <p>Work in Progress...</p>
+                <p>Not Enough Games Played..</p>
               </Card.Body>
             </Card>
           </Col>
@@ -106,7 +118,9 @@ const MyAccount = () => {
                   <ListGroup.Item><strong>Result:</strong> {game.result}</ListGroup.Item>
                   <ListGroup.Item><strong>Played as:</strong> {game.color_played}</ListGroup.Item>
                   <ListGroup.Item><strong>Opponent:</strong> {game.opponent}</ListGroup.Item>
-                  <ListGroup.Item><strong>Game Date:</strong> {new Date(game.created_at).toLocaleString()}</ListGroup.Item>
+                  <ListGroup.Item style={{ color: '#0000' }}>
+                    <strong>Game Date:</strong> {game.game_date ? game.game_date : 'Invalid Date'}
+                    </ListGroup.Item>
 
                 </ListGroup>
               </Card.Body>
