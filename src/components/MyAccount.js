@@ -63,7 +63,7 @@ const MyAccount = () => {
                   <ListGroup.Item><strong>Username:</strong> {userProfile.username}</ListGroup.Item>
                   <ListGroup.Item><strong>Email:</strong> {userProfile.email}</ListGroup.Item>
                   <ListGroup.Item><strong>Elo Rating:</strong> {userProfile.score}</ListGroup.Item>
-                  <ListGroup.Item><strong>Joined:</strong> {new Date(userProfile.date_joined).toLocaleDateString()}</ListGroup.Item>
+                  <ListGroup.Item><strong>Joined:</strong> {userProfile.joined_date}</ListGroup.Item>
                 </ListGroup>
               </Card.Body>
             </Card>
@@ -106,7 +106,8 @@ const MyAccount = () => {
                   <ListGroup.Item><strong>Result:</strong> {game.result}</ListGroup.Item>
                   <ListGroup.Item><strong>Played as:</strong> {game.color_played}</ListGroup.Item>
                   <ListGroup.Item><strong>Opponent:</strong> {game.opponent}</ListGroup.Item>
-                  <ListGroup.Item><strong>Game Date:</strong> {new Date(game.game_date).toLocaleDateString()}</ListGroup.Item>
+                  <ListGroup.Item><strong>Game Date:</strong> {new Date(game.created_at).toLocaleString()}</ListGroup.Item>
+
                 </ListGroup>
               </Card.Body>
             </Card>
